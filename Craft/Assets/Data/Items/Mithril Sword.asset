@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9a6f4f7575874d64d82e15bff826d364, type: 3}
   m_Name: Mithril Sword
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   itemName: Mithril Sword
-  value: 
+  goldValue: 
   rarity: 0
-  tint: {r: 0.4117647, g: 0.6666667, b: 1, a: 0}
   sprite: {fileID: 2800000, guid: f80d06861a91d5c419715bde3e60cff4, type: 3}
+  color: {r: 0.15686275, g: 0.7529412, b: 1, a: 0}
   weaponType: 0
   damage: 0
   element: 0

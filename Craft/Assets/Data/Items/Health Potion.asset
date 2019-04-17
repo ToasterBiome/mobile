@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b8c850ab9aa0a43901fb473f5fce2a, type: 3}
-  m_Name: Mithril Ingot
+  m_Script: {fileID: 11500000, guid: 5de4538c7ce72c94496fb5dcdae9d52a, type: 3}
+  m_Name: Health Potion
   m_EditorClassIdentifier: 
-  itemName: Mithril Ingot
+  itemName: 
   goldValue: 
   rarity: 0
-  sprite: {fileID: 2800000, guid: 2eecad2f74f126248b36ac83eff734dd, type: 3}
-  color: {r: 0.15686275, g: 0.7529412, b: 1, a: 0}
+  sprite: {fileID: 2800000, guid: f20c2e1e6501f3e4ea24bf742fabd1dc, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  hpBonus: 0
+  timeBonus: 0

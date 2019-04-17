@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mithril Ore
   m_EditorClassIdentifier: 
   itemName: Mithril Ore
-  value: 
+  goldValue: 
   rarity: 0
-  tint: {r: 0.4117647, g: 0.6666667, b: 1, a: 0}
   sprite: {fileID: 2800000, guid: e90b2a18cb54e4d499ddc252aed59329, type: 3}
+  color: {r: 0.15686275, g: 0.7529412, b: 1, a: 0}

@@ -5,17 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
 public class Item : ScriptableObject
 {
-    //item properties
     public enum Rarity { Common, Uncommon, Rare, VeryRare }
     public enum Element { None, Fire }
 
+    [Header("Item Information")]
     public string itemName;
-    public string value;
+    public string goldValue;
     public Rarity rarity;
-
-    public Color tint;
-
+    
+    [Header("Sprite Information")]
     public Texture2D sprite;
+    public Color color;
 
     /* drop table chances;
      * Common - (1/5) - 20%
@@ -26,27 +26,8 @@ public class Item : ScriptableObject
 
 }
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
-public class Weapon : Item
-{
-    public enum WeaponType { Longsword, Dagger, TwoHander }
-    public WeaponType weaponType;
-    public int damage;
-    public Element element;
-}
 
-[CreateAssetMenu(fileName = "New Armor", menuName = "Armor")]
-public class Armor : Item
-{
-    public enum ArmorType { Helmet, Chest, Pants, Shoes, Cape, Gloves }
-    public ArmorType armorType;
-    public int armorValue;
-    public Element element;
-}
 
-[CreateAssetMenu(fileName = "New Recipe", menuName = "Recipe")]
-public class Recipe : ScriptableObject
-{
-    public List<Item> recipe = new List<Item>();
-    public Item item;
-}
+
+
+
