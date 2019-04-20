@@ -92,6 +92,8 @@ public class BattleManager : MonoBehaviour {
         cursorController = slash.GetComponent<CursorController>();
         Application.targetFrameRate = 60;
         setEnemy(monster);
+
+        monster.loot.getRandomItem();
     }
 
     private void Awake()

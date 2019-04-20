@@ -16,6 +16,8 @@ public class Monster : ScriptableObject
     public Sprite sheildSprite;
     public int baseShieldHP;
     public int baseShieldDEF;
+
+    public LootTable loot;
 }
 
 

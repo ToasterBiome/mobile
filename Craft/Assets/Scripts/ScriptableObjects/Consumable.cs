@@ -6,6 +6,10 @@ using UnityEngine;
 public class Consumable : Item
 {
     [Header("Consumable Information")]
-    public int hpBonus;
-    public int timeBonus;
+    public List<Effect> effects;
+
+    public void Use()
+    {
+
+    }
 }

@@ -17,5 +17,6 @@ MonoBehaviour:
   rarity: 0
   sprite: {fileID: 2800000, guid: f20c2e1e6501f3e4ea24bf742fabd1dc, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
-  hpBonus: 0
-  timeBonus: 0
+  effects:
+  - effectType: 0
+    effectAmount: 15

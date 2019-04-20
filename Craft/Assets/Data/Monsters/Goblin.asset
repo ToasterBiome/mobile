@@ -21,3 +21,5 @@ MonoBehaviour:
   sheildSprite: {fileID: 0}
   baseShieldHP: 0
   baseShieldDEF: 0
+  loot:
+    table: []

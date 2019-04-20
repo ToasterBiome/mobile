@@ -5615,7 +5615,7 @@ MonoBehaviour:
   cursorController: {fileID: 0}
   menuButtons: {fileID: 918108987}
   lootMenu: {fileID: 1933033951}
-  monster: {fileID: 11400000, guid: a28b34baed4689848bfc91110b9a81d8, type: 2}
+  monster: {fileID: 11400000, guid: dde7edfc7d57ab443b3bd8b5752f28ec, type: 2}
   currentBattlePhase: 0
   timer: 2
   maxTimer: 2

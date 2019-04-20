@@ -21,3 +21,11 @@ MonoBehaviour:
   sheildSprite: {fileID: 0}
   baseShieldHP: 0
   baseShieldDEF: 0
+  loot:
+    table:
+    - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+      weight: 10
+    - item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
+      weight: 40
+    - item: {fileID: 0}
+      weight: 50
