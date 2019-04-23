@@ -62,6 +62,8 @@ public class BattleManager : MonoBehaviour {
 
     public Monster monster;
 
+    public PlayerData player;
+
     public enum BattlePhase
     {
         Start,
@@ -92,8 +94,6 @@ public class BattleManager : MonoBehaviour {
         cursorController = slash.GetComponent<CursorController>();
         Application.targetFrameRate = 60;
         setEnemy(monster);
-
-        monster.loot.getRandomItem();
     }
 
     private void Awake()

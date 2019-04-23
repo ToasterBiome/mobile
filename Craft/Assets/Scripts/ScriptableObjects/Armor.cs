@@ -10,5 +10,24 @@ public class Armor : Item
     public ArmorType armorType;
     public int armorValue;
     public Element element;
+
+    public List<StatModifier> modifiers = new List<StatModifier>();
+
+    public void OnEquip(PlayerData player)
+    {
+        foreach(StatModifier mod in modifiers)
+        {
+            player.DEFENSE.AddModifier(mod);
+        }
+    }
+
+    public void OnUnequip(PlayerData player)
+    {
+
+        foreach (StatModifier mod in modifiers)
+        {
+            player.DEFENSE.RemoveModifier(mod);
+        }
+    }
 }
 

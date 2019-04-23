@@ -19,9 +19,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inventory:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b799cfebae25a4149b48854af25c4c25, type: 2}
+  - {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
+  - {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
+  - {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
+  - {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
   maxInventory: 16
+  ATTACK:
+    baseValue: 5
+    isDirty: 0
+    statModifiers: []
+  DEFENSE:
+    baseValue: 5
+    isDirty: 0
+    statModifiers: []

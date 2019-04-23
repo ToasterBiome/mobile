@@ -10,6 +10,7 @@ public class Item : ScriptableObject
 
     [Header("Item Information")]
     public string itemName;
+    public string itemDescription;
     public string goldValue;
     public Rarity rarity;
     

@@ -8,9 +8,9 @@ public class PlayerData : ScriptableObject
     public List<Armor> equipment = new List<Armor>(4);
     public List<Item> inventory = new List<Item>();
     public int maxInventory = 16;
-    public enum ATTRIBUTE { HP, Attack, Defense, Luck}
 
-    public List<int> attributes = new List<int>(4);
+    public CharacterStat ATTACK = new CharacterStat(5);
+    public CharacterStat DEFENSE = new CharacterStat(5);
 
 
 
@@ -35,10 +35,11 @@ public class PlayerData : ScriptableObject
         {
             //there is something already equipped
             tempArmor = (Armor)equipment[(int)armor.armorType];
-
+            tempArmor.OnUnequip(this);
         }
         equipment[(int)armor.armorType] = armor;
-        if(tempArmor != null)
+        armor.OnEquip(this);
+        if (tempArmor != null)
         {
             //if there is armor
             addToInventory(tempArmor);
@@ -48,22 +49,13 @@ public class PlayerData : ScriptableObject
 
     public bool Unequip(Armor armor)
     {
+        armor.OnUnequip(this);
         equipment[(int)armor.armorType] = null;
         addToInventory(armor);
         return true;
     }
 
-    public void recalculateAttributes()
-    {
-        //TODO: ADD FUNCTION
-        //EVERY TIME YOU EQUIP/UNEQUIP IT SHOULD RECALCULATE
-    }
-
-    public int getAttributeValue(ATTRIBUTE attribute)
-    {
-        return attributes[(int)attribute];
-    }
-
+   
 
 
 }

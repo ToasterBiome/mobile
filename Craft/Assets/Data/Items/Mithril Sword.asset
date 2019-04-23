@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Mithril Sword
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   itemName: Mithril Sword
+  itemDescription: 
   goldValue: 
   rarity: 0
   sprite: {fileID: 2800000, guid: f80d06861a91d5c419715bde3e60cff4, type: 3}
-  color: {r: 0.15686275, g: 0.7529412, b: 1, a: 0}
+  color: {r: 0.15686275, g: 0.7529412, b: 1, a: 1}
   weaponType: 0
   damage: 0
   element: 0
