@@ -22,4 +22,8 @@ MonoBehaviour:
   baseShieldHP: 0
   baseShieldDEF: 0
   loot:
-    table: []
+    table:
+    - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+      weight: 35
+    - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
+      weight: 65

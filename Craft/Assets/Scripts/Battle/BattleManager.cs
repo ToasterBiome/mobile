@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour {
 
 
-
+    
 
     public static BattleManager instance;
 
@@ -221,6 +221,8 @@ public class BattleManager : MonoBehaviour {
             Debug.Log("Battle ended");
             lootMenu.SetActive(true);
             lootMenu.GetComponent<CanvasGroup>().alpha = 0f;
+            List<Item> loot = monster.loot.getRandomItem();
+            lootMenu.GetComponent<LootManager>().GenerateItems(loot);
             StartCoroutine("FadeInLoot");
             currentBattlePhase = BattlePhase.Ended;
             return;
@@ -297,7 +299,7 @@ public class BattleManager : MonoBehaviour {
             UI.GetComponent<CanvasGroup>().alpha = (i / numberOfFrames);
             yield return null;
         }
-        
+        UI.GetComponent<CanvasGroup>().alpha = 1f;
     }
 
     IEnumerator FadeOutUI(GameObject UI, float numberOfFrames)
@@ -307,6 +309,7 @@ public class BattleManager : MonoBehaviour {
             UI.GetComponent<CanvasGroup>().alpha = (i / numberOfFrames);
             yield return null;
         }
+        UI.GetComponent<CanvasGroup>().alpha = 0f;
         UI.SetActive(false);
     }
 
@@ -646,6 +649,18 @@ public class BattleManager : MonoBehaviour {
             shieldSlider.gameObject.SetActive(false);
             hasShield = false;
             shieldActive = false;
+        }
+    }
+
+    public void toggleMenu(GameObject menu)
+    {
+        Debug.Log("Toggling");
+        if(menu.activeInHierarchy)
+        {
+            StartCoroutine(FadeOutUI(menu, 8f));
+        } else
+        {
+            StartCoroutine(FadeInUI(menu, 8f));
         }
     }
 }
