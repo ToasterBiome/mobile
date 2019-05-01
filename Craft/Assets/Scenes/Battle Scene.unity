@@ -3339,7 +3339,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1149559589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158491246}
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1149559589
@@ -3439,7 +3450,7 @@ MonoBehaviour:
   cursorController: {fileID: 0}
   menuButtons: {fileID: 918108987}
   lootMenu: {fileID: 1933033951}
-  monster: {fileID: 11400000, guid: dde7edfc7d57ab443b3bd8b5752f28ec, type: 2}
+  monster: {fileID: 11400000, guid: a28b34baed4689848bfc91110b9a81d8, type: 2}
   player: {fileID: 11400000, guid: bdb62f89e31f2374babefb5adc417866, type: 2}
   currentBattlePhase: 0
   timer: 2

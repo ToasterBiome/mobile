@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class LootItem 
 {
-    public Item item;
+    public ItemStack itemStack;
     public int weight;
 }

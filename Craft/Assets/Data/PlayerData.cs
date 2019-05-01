@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public List<Armor> equipment = new List<Armor>(4);
-    public List<Item> inventory = new List<Item>();
+    public List<ItemStack> inventory = new List<ItemStack>();
     public int maxInventory = 16;
 
     public CharacterStat ATTACK = new CharacterStat(5);
@@ -14,7 +14,7 @@ public class PlayerData : ScriptableObject
 
 
 
-    public bool addToInventory(Item item)
+    public bool addToInventory(ItemStack item)
     {
         if (inventory.Count >= 16)
         {
@@ -42,7 +42,7 @@ public class PlayerData : ScriptableObject
         if (tempArmor != null)
         {
             //if there is armor
-            addToInventory(tempArmor);
+            addToInventory(new ItemStack(tempArmor,1));
         }
         return true;
     }
@@ -51,7 +51,7 @@ public class PlayerData : ScriptableObject
     {
         armor.OnUnequip(this);
         equipment[(int)armor.armorType] = null;
-        addToInventory(armor);
+        addToInventory(new ItemStack(armor, 1));
         return true;
     }
 

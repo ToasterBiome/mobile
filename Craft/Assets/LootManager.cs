@@ -20,13 +20,16 @@ public class LootManager : MonoBehaviour
 
     }
 
-    public void GenerateItems(List<Item> loot)
+    public void GenerateItems(List<ItemStack> loot)
     {
-        foreach (Item item in loot)
+        Debug.Log("Beginning making items");
+        foreach (ItemStack itemStack in loot)
         {
+            Debug.Log("Instantiating item object");
             GameObject itemContainer = Instantiate(itemPrefab, contentParent.transform);
-            itemContainer.GetComponent<UIItemContainer>().setValues(item.itemName, item.sprite, 1, item.color);
+            itemContainer.GetComponent<UIItemContainer>().setValues(itemStack.item.itemName, itemStack.item.sprite, itemStack.quantity, itemStack.item.color);
             items.Add(itemContainer);
         }
+        Debug.Log("Done making items");
     }
 }

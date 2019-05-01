@@ -7,10 +7,11 @@ public class LootTable
 {
     public List<LootItem> table = new List<LootItem>();
 
-    public List<Item> getRandomItem()
+    public List<ItemStack> getRandomItem(int rolls)
     {
-        List<Item> drop = new List<Item>();
+        List<ItemStack> drop = new List<ItemStack>();
 
+        
         int totalWeight = 0;
         foreach(LootItem li in table)
         {
@@ -20,45 +21,69 @@ public class LootTable
 
         if(li.weight == -1)
             {
-                drop.Add(li.item);
+                drop.Add(li.itemStack);
             } else
             {
                 totalWeight += li.weight;
             }
         }
 
-        //generate random number
-        int generatedValue = Random.Range(0, totalWeight + 1);
-
-        //add the item
-
-        //walk through the dictionary to find the key
-
-        Debug.Log("Generated value is " + generatedValue);
-        Debug.Log("Total Weight value is " + totalWeight);
-
+        int generatedValue = 0;
         int step = 0;
-        foreach (LootItem li in table)
+
+        for (int i = 0; i < rolls; i++)
         {
-            int oldstep = step;
-            step += li.weight;
+            //generate random number
+            generatedValue = Random.Range(0, totalWeight + 1);
 
-            Debug.Log("Old Step value is " + oldstep);
-            Debug.Log("Step value is " + step);
+            //add the item
 
-            if (oldstep < generatedValue && step >= generatedValue)
+            //walk through the dictionary to find the key
+
+            Debug.Log("Generated value is " + generatedValue);
+            Debug.Log("Total Weight value is " + totalWeight);
+
+            step = 0;
+            foreach (LootItem li in table)
             {
-                if(li.item != null)
+                int oldstep = step;
+                step += li.weight;
+
+                Debug.Log("Old Step value is " + oldstep);
+                Debug.Log("Step value is " + step);
+
+                if (oldstep < generatedValue && step >= generatedValue)
                 {
-                    Debug.Log("Adding" + li.item.name + " to drop");
-                    drop.Add(li.item);
-                    break;
-                } else
-                {
-                    Debug.Log("Hit null");
-                    break;
+                    if (li.itemStack != null)
+                    {
+                        Debug.Log("Adding" + li.itemStack.item.name + " to drop");
+                        //check if it already exists
+                        bool alreadyExists = false;
+                        for(int j = 0; j < drop.Count; j++)
+                        {
+                            if (drop[j].item.itemName == li.itemStack.item.itemName)
+                            {
+                                //it already exists
+
+                                drop[j].quantity += li.itemStack.quantity;
+                                alreadyExists = true;
+                            }
+                        }
+                        if(!alreadyExists)
+                        {
+                            ItemStack itemToAdd = new ItemStack(li.itemStack.item,li.itemStack.quantity);
+                            drop.Add(itemToAdd);
+                        }
+                        
+                        break;
+                    }
+                    else
+                    {
+                        Debug.Log("Hit null");
+                        break;
+                    }
                 }
-            } 
+            }
         }
 
         return drop;

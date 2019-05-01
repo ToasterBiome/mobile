@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour {
 
 
-    
-
     public static BattleManager instance;
 
     public bool isFighting = false;
@@ -221,9 +219,10 @@ public class BattleManager : MonoBehaviour {
             Debug.Log("Battle ended");
             lootMenu.SetActive(true);
             lootMenu.GetComponent<CanvasGroup>().alpha = 0f;
-            List<Item> loot = monster.loot.getRandomItem();
+            List<ItemStack> loot = new List<ItemStack>();
+            loot = monster.loot.getRandomItem(5);
             lootMenu.GetComponent<LootManager>().GenerateItems(loot);
-            StartCoroutine("FadeInLoot");
+            StartCoroutine(FadeInLoot());
             currentBattlePhase = BattlePhase.Ended;
             return;
         }
