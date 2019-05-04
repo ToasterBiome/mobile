@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Health Potion
   m_EditorClassIdentifier: 
   itemName: Health Potion
-  itemDescription: 
+  itemDescription: Sluuuurp
   goldValue: 
   rarity: 0
   sprite: {fileID: 2800000, guid: b841f2336d980c04d9a16f2eb99ae2d8, type: 3}

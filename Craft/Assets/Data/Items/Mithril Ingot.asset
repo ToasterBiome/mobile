@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mithril Ingot
   m_EditorClassIdentifier: 
   itemName: Mithril Ingot
-  itemDescription: 
+  itemDescription: "\u2605\uFF9F.*\uFF65\uFF61\uFF9F.*\uFF65\uFF61\uFF9F"
   goldValue: 
   rarity: 0
   sprite: {fileID: 2800000, guid: 2eecad2f74f126248b36ac83eff734dd, type: 3}

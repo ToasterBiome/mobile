@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mithril Sword
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   itemName: Mithril Sword
-  itemDescription: 
+  itemDescription: A fine choice.
   goldValue: 
   rarity: 0
   sprite: {fileID: 2800000, guid: f80d06861a91d5c419715bde3e60cff4, type: 3}

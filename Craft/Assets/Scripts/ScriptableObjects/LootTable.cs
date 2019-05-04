@@ -54,7 +54,7 @@ public class LootTable
 
                 if (oldstep < generatedValue && step >= generatedValue)
                 {
-                    if (li.itemStack != null)
+                    if (li.itemStack.item != null)
                     {
                         Debug.Log("Adding" + li.itemStack.item.name + " to drop");
                         //check if it already exists

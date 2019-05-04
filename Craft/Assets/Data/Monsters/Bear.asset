@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Bear
   sprite: {fileID: 21300000, guid: b91e26bd9713270458b24a3b59590390, type: 3}
-  baseHP: 144
+  baseHP: 60
   baseDEF: 3
   level: 17
   hasShield: 0
@@ -23,9 +23,15 @@ MonoBehaviour:
   baseShieldDEF: 0
   loot:
     table:
-    - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+    - itemStack:
+        item: {fileID: 0}
+        quantity: 0
       weight: 10
-    - item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
+    - itemStack:
+        item: {fileID: 0}
+        quantity: 0
       weight: 40
-    - item: {fileID: 0}
+    - itemStack:
+        item: {fileID: 0}
+        quantity: 0
       weight: 50

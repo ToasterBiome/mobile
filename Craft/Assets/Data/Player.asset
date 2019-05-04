@@ -19,11 +19,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inventory:
-  - {fileID: 11400000, guid: b799cfebae25a4149b48854af25c4c25, type: 2}
-  - {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
-  - {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
-  - {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
-  - {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
+  - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+    quantity: 2
+  - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
+    quantity: 7
+  - item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
+    quantity: 7
   maxInventory: 16
   ATTACK:
     baseValue: 5
