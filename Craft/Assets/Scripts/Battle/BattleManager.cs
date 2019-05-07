@@ -29,6 +29,8 @@ public class BattleManager : MonoBehaviour {
 
     public Slider playerHpSlider;
     public Text playerHpText;
+    public Image playerHpColor;
+    public Gradient healthGradient;
 
     public Slider energySlider;
     public Text timerText;
@@ -62,6 +64,8 @@ public class BattleManager : MonoBehaviour {
 
     public PlayerData player;
 
+    public ParticleSystem healthRestore;
+
     public enum BattlePhase
     {
         Start,
@@ -92,6 +96,9 @@ public class BattleManager : MonoBehaviour {
         cursorController = slash.GetComponent<CursorController>();
         Application.targetFrameRate = 60;
         setEnemy(monster);
+        player.hp = 36;
+        PlayerPrefs.DeleteAll();
+        refreshUI();
     }
 
     private void Awake()
@@ -602,9 +609,8 @@ public class BattleManager : MonoBehaviour {
     public void playerHit()
     {
         StartCoroutine(ShakePlayer(0.25f, .5f));
-        playerHP -= 10;
-        playerHpSlider.value = (playerHP / 100f);
-        playerHpText.text = playerHP.ToString() + "/100";
+        player.hp -= 10;
+        refreshUI();
     }
 
     public void enemyAttackProcess()
@@ -661,5 +667,17 @@ public class BattleManager : MonoBehaviour {
         {
             StartCoroutine(FadeInUI(menu, 8f));
         }
+    }
+
+    public void UseItem(GameObject contentObject)
+    {
+
+    }
+
+    public void refreshUI()
+    {
+        playerHpSlider.value = ((float)player.hp / (float)player.maxhp);
+        playerHpText.text = player.hp.ToString() + "/" + player.maxhp.ToString() ;
+        playerHpColor.color = healthGradient.Evaluate(playerHpSlider.value);
     }
 }

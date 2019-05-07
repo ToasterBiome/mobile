@@ -6,10 +6,8 @@ using UnityEngine;
 public class Consumable : Item
 {
     [Header("Consumable Information")]
-    public List<Effect> effects;
+    public int bah;
+    //public List<Effect> effects;
 
-    public void Use()
-    {
-
-    }
+    
 }

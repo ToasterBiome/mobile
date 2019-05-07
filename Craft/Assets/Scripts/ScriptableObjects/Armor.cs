@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Armor", menuName = "Armor")]
 public class Armor : Item
 {
-    public enum ArmorType { Helmet, Chest, Pants, Shoes }
+    public enum ArmorType { Helmet, Chest, Pants, Shoes, Ring }
     [Header("Armor Information")]
     public ArmorType armorType;
     public int armorValue;

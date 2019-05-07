@@ -27,7 +27,8 @@ public class LootManager : MonoBehaviour
         {
             Debug.Log("Instantiating item object");
             GameObject itemContainer = Instantiate(itemPrefab, contentParent.transform);
-            itemContainer.GetComponent<UIItemContainer>().setValues(itemStack.item.itemName, itemStack.item.sprite, itemStack.quantity, itemStack.item.color);
+            itemContainer.GetComponent<UIItemContainer>().managerParent = gameObject;
+            itemContainer.GetComponent<UIItemContainer>().setValues(itemStack, itemStack.item.itemName, itemStack.item.sprite, itemStack.quantity, itemStack.item.color);
             items.Add(itemContainer);
         }
         Debug.Log("Done making items");

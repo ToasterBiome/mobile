@@ -19,13 +19,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inventory:
-  - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
-    quantity: 2
-  - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
-    quantity: 7
   - item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
-    quantity: 7
+    quantity: 3
+  - item: {fileID: 11400000, guid: a9ba8566fb3849145a19666221e93fc7, type: 2}
+    quantity: 1
   maxInventory: 16
+  hp: 100
+  maxhp: 100
   ATTACK:
     baseValue: 5
     isDirty: 0

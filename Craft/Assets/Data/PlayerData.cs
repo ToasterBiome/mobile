@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New PlayerData", menuName = "PlayerData")]
 public class PlayerData : ScriptableObject
 {
-    public List<Armor> equipment = new List<Armor>(4);
+    public List<Armor> equipment = new List<Armor>(5);
     public List<ItemStack> inventory = new List<ItemStack>();
     public int maxInventory = 16;
+
+    public int hp = 100;
+    public int maxhp = 100;
 
     public CharacterStat ATTACK = new CharacterStat(5);
     public CharacterStat DEFENSE = new CharacterStat(5);
@@ -54,7 +57,6 @@ public class PlayerData : ScriptableObject
         addToInventory(new ItemStack(armor, 1));
         return true;
     }
-
    
 
 
