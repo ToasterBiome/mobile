@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ddce704ec0489d4ea785350cc5d37c2, type: 3}
-  m_Name: Declan
+  m_Name: Tree Spirit
   m_EditorClassIdentifier: 
-  monsterName: Declan
-  sprite: {fileID: 21300000, guid: 50ebafb99dda27a4b9375b296766fb15, type: 3}
-  baseHP: 2000
-  baseDEF: 0
-  level: 666
-  hasShield: 1
-  sheildSprite: {fileID: 21300000, guid: dc7d70e7e8171204e98b163019091062, type: 3}
-  baseShieldHP: 16
-  baseShieldDEF: 4
+  monsterName: Tree Spirit
+  sprite: {fileID: 21300000, guid: ec68db12a38c37343897edaeb3051244, type: 3}
+  baseHP: 140
+  baseDEF: 5
+  level: 22
+  hasShield: 0
+  sheildSprite: {fileID: 0}
+  baseShieldHP: 0
+  baseShieldDEF: 0
+  loot:
+    table: []

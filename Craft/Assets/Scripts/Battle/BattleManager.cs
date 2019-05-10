@@ -54,8 +54,6 @@ public class BattleManager : MonoBehaviour {
 
     public GameObject failExplosion;
 
-    public CursorController cursorController;
-
     public GameObject menuButtons;
 
     public GameObject lootMenu;
@@ -93,10 +91,9 @@ public class BattleManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        cursorController = slash.GetComponent<CursorController>();
         Application.targetFrameRate = 60;
         setEnemy(monster);
-        player.hp = 36;
+        player.hp = 100;
         PlayerPrefs.DeleteAll();
         refreshUI();
     }
@@ -425,7 +422,7 @@ public class BattleManager : MonoBehaviour {
                 shieldHp -= damage;
                 shieldSlider.value = (shieldHp / monster.baseShieldHP);
                 shieldText.text = Mathf.Ceil(shieldHp).ToString() + "/" + monster.baseShieldHP;
-                spawnDamageText(Vector3.zero, damage, slash.GetComponent<SlashContainer>().criticalAttack);
+                spawnDamageText(Vector3.zero, damage, slash.GetComponent<Slash>().hitType);
                 StartCoroutine(ShakeEnemy(0.125f, .25f));
                 if (shieldHp <= 0) //shield dead
                 {

@@ -7,15 +7,12 @@ public class DamageText : MonoBehaviour {
 
     public float TimeToDeath;
 
-    float deathTime;
-
     public Vector2 launchVector;
 
 	// Use this for initialization
 	void Start () {
         Destroy(gameObject, TimeToDeath);
         launchVector = Random.insideUnitCircle * 8;
-        deathTime = Time.time + TimeToDeath;
     }
 	
 	// Update is called once per frame

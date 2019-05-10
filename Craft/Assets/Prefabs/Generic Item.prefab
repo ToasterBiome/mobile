@@ -91,6 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbb4b154802eda42834ea0231b27143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemStack:
+    item: {fileID: 0}
+    quantity: 0
+    slot: 0
   itemNameDesc: {fileID: 5413206097480893852}
   sprite: {fileID: 3608585933379166210}
   Quantity: {fileID: 5413206096653828925}

@@ -7,10 +7,16 @@ public class ItemStack
 {
     public Item item;
     public int quantity;
+    public int slot;
 
     public ItemStack(Item i, int q)
     {
         item = i;
         quantity = q;
+    }
+
+    public void SetSlot(int s)
+    {
+        slot = s;
     }
 }

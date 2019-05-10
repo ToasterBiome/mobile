@@ -17,17 +17,24 @@ public class PlayerData : ScriptableObject
 
 
 
-    public bool addToInventory(ItemStack item)
+    public bool addToInventory(int slot, ItemStack item)
     {
-        if (inventory.Count >= 16)
+        if (inventory.Count < 16)
+        {
+            //it can fit
+            item.SetSlot(slot);
+            inventory.Add(item);
+            return true;
+        } else
         {
             return false;
         }
-        else
-        {
-            inventory.Add(item);
-            return true;
-        }
+    }
+    public bool removeFromInventory(int slot)
+    {
+        inventory[slot] = new ItemStack(null, 0);
+        //return inventory.Remove(inventory[slot]);
+        return true;
     }
 
     public bool Equip(Armor armor)
@@ -45,7 +52,7 @@ public class PlayerData : ScriptableObject
         if (tempArmor != null)
         {
             //if there is armor
-            addToInventory(new ItemStack(tempArmor,1));
+            addToInventory(inventory.Count, new ItemStack(tempArmor,1));
         }
         return true;
     }
@@ -54,7 +61,7 @@ public class PlayerData : ScriptableObject
     {
         armor.OnUnequip(this);
         equipment[(int)armor.armorType] = null;
-        addToInventory(new ItemStack(armor, 1));
+        addToInventory(inventory.Count, new ItemStack(armor, 1));
         return true;
     }
    
