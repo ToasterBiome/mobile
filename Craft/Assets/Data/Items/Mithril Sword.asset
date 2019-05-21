@@ -16,8 +16,9 @@ MonoBehaviour:
   itemDescription: A fine choice.
   goldValue: 
   rarity: 0
-  sprite: {fileID: 2800000, guid: f80d06861a91d5c419715bde3e60cff4, type: 3}
-  color: {r: 0.15686275, g: 0.7529412, b: 1, a: 1}
+  sprite: {fileID: 2800000, guid: 193153cdb68f37f4e97e15a8e1069786, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  effects: []
   weaponType: 0
   damage: 0
   element: 0

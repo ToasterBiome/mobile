@@ -18,6 +18,8 @@ public class Slash : MonoBehaviour
     
     public LineRenderer lr;
 
+    public float distance;
+
     public IEnumerator Fade()
     {
         float time = 0.5f;
@@ -75,6 +77,8 @@ public class Slash : MonoBehaviour
         float[] ass = new float[2];
         ass[0] = slopeCalc;
         ass[1] = Vector2.Distance(startPos, endPos);
+
+        distance = ass[1];
 
         startPoint = startPos;
         middlePoint = middlePos;

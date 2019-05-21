@@ -16,5 +16,6 @@ MonoBehaviour:
   itemDescription: "\u2605\uFF9F.*\uFF65\uFF61\uFF9F.*\uFF65\uFF61\uFF9F"
   goldValue: 
   rarity: 0
-  sprite: {fileID: 2800000, guid: 2eecad2f74f126248b36ac83eff734dd, type: 3}
+  sprite: {fileID: 2800000, guid: 965dc7b45be17a54ebae607b8064acb9, type: 3}
   color: {r: 0.15686275, g: 0.7529412, b: 1, a: 1}
+  effects: []

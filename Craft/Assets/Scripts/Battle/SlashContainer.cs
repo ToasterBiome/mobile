@@ -63,6 +63,12 @@ public class SlashContainer : MonoBehaviour
                 currentSlash.GetComponent<Slash>().color = new Color(.5f, .5f, .5f);
             }
 
+            if (currentSlash.GetComponent<Slash>().distance < 3)
+            {
+                currentSlash.GetComponent<Slash>().hitType = 0;
+                currentSlash.GetComponent<Slash>().color = new Color(.5f, .5f, .5f);
+            }
+
 
             BattleManager.instance.recieveHit(currentSlash);
 

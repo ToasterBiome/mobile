@@ -16,13 +16,14 @@ MonoBehaviour:
   itemDescription: Intense Cherry Flavor
   goldValue: 
   rarity: 1
-  sprite: {fileID: 2800000, guid: 2bdda2466e8024641941b7e930620f44, type: 3}
+  sprite: {fileID: 2800000, guid: f6f0fad7fab157840896ee188a5327f7, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   effects:
   - modifier:
       value: 5
       statType: 0
     effectType: 1
+    amount: 0
   armorType: 4
   armorValue: 0
   element: 0

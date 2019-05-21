@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour {
 
-
     public static BattleManager instance;
 
     public bool isFighting = false;
@@ -390,6 +389,7 @@ public class BattleManager : MonoBehaviour {
 
             //Debug.Log(slash.GetComponent<CursorController>().midPoint);
             StartCoroutine(ShakeEnemy(0.25f,.5f));
+            
             if(killed)
             {
                 return true;
@@ -414,11 +414,26 @@ public class BattleManager : MonoBehaviour {
             {
                 damage *= 1.5f;
             }
+
+            if (slash.GetComponent<Slash>().distance > 5)
+            {
+                damage += (slash.GetComponent<Slash>().distance / 5f);
+            }
+
             damage = Mathf.Floor(damage);
 
             if (shieldActive) //reroute damage to shield first
             {
+                
                 damage -= monster.baseShieldDEF;
+                if (damage <= 0)
+                {
+                    damage = 0;
+                    spawnDamageText(Vector3.zero, damage, 0);
+                    slash.GetComponent<Slash>().color = new Color(1, 0.862f, 0.180f);
+                    StartCoroutine(ShakeEnemy(0.125f, .25f));
+                    return false;
+                }
                 shieldHp -= damage;
                 shieldSlider.value = (shieldHp / monster.baseShieldHP);
                 shieldText.text = Mathf.Ceil(shieldHp).ToString() + "/" + monster.baseShieldHP;
@@ -464,6 +479,11 @@ public class BattleManager : MonoBehaviour {
 
             //Debug.Log(slash.GetComponent<CursorController>().midPoint);
             StartCoroutine(ShakeEnemy(0.25f, .5f));
+
+            //get angle of slash
+            Vector2 pos = slash.GetComponent<Slash>().startPoint - slash.GetComponent<Slash>().endPoint;
+            Vector2 normalpos = pos.normalized;
+
             if (killed)
             {
                 StartCoroutine("DissolveEnemy");
