@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using Random = UnityEngine.Random;
 
 public class BattleManager : MonoBehaviour {
+
+    public GameObject blackFade;
 
     public static BattleManager instance;
 
@@ -95,6 +99,19 @@ public class BattleManager : MonoBehaviour {
         player.hp = 100;
         PlayerPrefs.DeleteAll();
         refreshUI();
+        StartCoroutine(BattleFade());
+    }
+
+    IEnumerator BattleFade()
+    {
+        float waitTime = 1f; //seconds
+        float counter = 0f;
+        while (counter < waitTime)
+        {
+            blackFade.GetComponent<Image>().material.SetFloat("_DissolvePower", 1 - counter / waitTime);
+            counter += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private void Awake()
