@@ -114,6 +114,18 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
+    private void OnValidate()
+    {
+        if(monster != null)
+        {
+            setEnemy(monster);
+        } else
+        {
+            Debug.LogWarning("Monster is not set in BattleManager");
+        }
+        
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -128,9 +140,6 @@ public class BattleManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-
-
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -250,7 +259,6 @@ public class BattleManager : MonoBehaviour {
         {
             return;
         }
-
 
 
 
@@ -525,18 +533,10 @@ public class BattleManager : MonoBehaviour {
         //spawn the actual text
         GameObject damageTextObject = Instantiate(damageText, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity);
         damageTextObject.transform.SetParent(canvas.transform);
-        damageTextObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        damageTextObject.GetComponent<Text>().text = number.ToString();
-        damageTextObject.GetComponent<Text>();
-        damageTextObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        damageTextObject.GetComponent<DamageText>().setValues(location, number, hitType);
         //critical or not
         if(hitType == 0)
         {
-            damageTextObject.GetComponent<Text>().color = new Color(.5f, 0.5f, 0.5f);
-            damageTextObject.GetComponent<Text>().text = "miss";
-            damageTextObject.GetComponent<Text>().fontSize = 48;
-            damageTextObject.GetComponent<Outline>().effectDistance = new Vector2(1, 1);
-
             GameObject critObject = Instantiate(failExplosion, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity); //create fail explosion gameObject
 
             critObject.transform.SetParent(canvas.transform);
@@ -546,8 +546,6 @@ public class BattleManager : MonoBehaviour {
 
         if (hitType == 2)
         {
-            damageTextObject.GetComponent<Text>().color = new Color(1, 0.862f, 0.180f); //set color to gold
-
             GameObject critObject = Instantiate(criticalExplosion, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity); //create critical explosion gameObject
 
             critObject.transform.SetParent(canvas.transform);

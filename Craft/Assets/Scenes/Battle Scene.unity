@@ -1947,7 +1947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &558651963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7374,7 +7374,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: f9a80a15549b2bc4b8f62ae876172125, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b91e26bd9713270458b24a3b59590390, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7547,7 +7547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &918108988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8212,11 +8212,11 @@ MonoBehaviour:
   enemy: {fileID: 859922319}
   enemyOffset: 0
   shield: {fileID: 1189147169}
-  enemyHp: 100
+  enemyHp: 60
   playerHP: 100
   hasShield: 0
   shieldActive: 0
-  shieldHp: 0
+  shieldHp: 16
   enemyHpSlider: {fileID: 1683665740}
   enemyHpText: {fileID: 2035762436}
   playerHpSlider: {fileID: 1996414886}
@@ -8268,7 +8268,7 @@ MonoBehaviour:
     type: 3}
   menuButtons: {fileID: 918108987}
   lootMenu: {fileID: 1933033951}
-  monster: {fileID: 11400000, guid: a28b34baed4689848bfc91110b9a81d8, type: 2}
+  monster: {fileID: 11400000, guid: dde7edfc7d57ab443b3bd8b5752f28ec, type: 2}
   player: {fileID: 11400000, guid: bdb62f89e31f2374babefb5adc417866, type: 2}
   healthRestore: {fileID: 778346987}
   currentBattlePhase: 0
@@ -8323,9 +8323,9 @@ RectTransform:
   m_Father: {fileID: 918108988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: 20}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164323569
@@ -8496,7 +8496,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.125, y: 19.125}
+  m_Size: {x: 20, y: 26.000002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -9668,7 +9668,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11058,7 +11058,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 144/144
+  m_Text: 60/60
 --- !u!222 &2035762437
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11176,9 +11176,9 @@ RectTransform:
   m_Father: {fileID: 918108988}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -110}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094526602

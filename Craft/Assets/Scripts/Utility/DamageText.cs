@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class DamageText : MonoBehaviour {
 
+    public Text textComp;
+    public Image imageComp;
+
     public float TimeToDeath;
 
     public Vector2 launchVector;
@@ -17,16 +20,30 @@ public class DamageText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        
         GetComponent<RectTransform>().localPosition = GetComponent<RectTransform>().localPosition + (Vector3)launchVector;
-        
-            launchVector *= 0.95f;
+        launchVector *= 0.95f;
+    }
 
-        Color textColor = GetComponent<Text>().color;
+    public void setValues(Vector2 location, float number, int hitType)
+    {
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        textComp.text = number.ToString();
+        GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
-        //GetComponent<Text>().color = new Color(textColor.r, textColor.g, textColor.b, textColor.a - (1/TimeToDeath));
+        if (hitType == 0)
+        {
+            textComp.color = Globals.Instance.missHitColor;
+            imageComp.color = Globals.Instance.missHitColor;
+            textComp.text = "X";
+            textComp.fontSize = 48;
+            //textComp.GetComponent<Outline>().effectDistance = new Vector2(1, 1);
+        }
 
-        //transform.position = new Vector2(transform.position.x, transform.position.y - 4);
+        if (hitType == 2)
+        {
+            textComp.color = Globals.Instance.criticalHitColor; //set color to gold
+            imageComp.color = Globals.Instance.criticalHitColor;
+        }
+
     }
 }
