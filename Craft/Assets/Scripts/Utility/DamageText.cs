@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DamageText : MonoBehaviour {
 
-    public Text textComp;
+    public TextMeshProUGUI textComp;
+    //public Text textComp;
     public Image imageComp;
 
     public float TimeToDeath;

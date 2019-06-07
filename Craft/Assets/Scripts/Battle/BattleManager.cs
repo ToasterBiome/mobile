@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 using System;
 using Random = UnityEngine.Random;
@@ -28,10 +29,10 @@ public class BattleManager : MonoBehaviour {
     public float shieldHp;
 
     public Slider enemyHpSlider;
-    public Text enemyHpText;
+    public TextMeshProUGUI enemyHpText;
 
     public Slider playerHpSlider;
-    public Text playerHpText;
+    public TextMeshProUGUI playerHpText;
     public Image playerHpColor;
     public Gradient healthGradient;
 
@@ -41,7 +42,7 @@ public class BattleManager : MonoBehaviour {
     public Slider shieldSlider;
     public Text shieldText;
 
-    public Text enemyNameLevel;
+    public TextMeshProUGUI enemyNameLevel;
 
     public bool yourTurn = true;
 

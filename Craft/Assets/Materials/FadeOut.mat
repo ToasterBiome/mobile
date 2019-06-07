@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 1
-    - _DissolvePower: 0.006434262
+    - _DissolvePower: 0.007430434
     - _EmissionThickness: 0.071
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
