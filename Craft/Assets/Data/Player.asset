@@ -23,11 +23,11 @@ MonoBehaviour:
     quantity: 1
     slot: 0
   - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
-    quantity: 3
-    slot: 0
+    quantity: 0
+    slot: 1
   - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
-    quantity: 10
-    slot: 0
+    quantity: 5
+    slot: 2
   - item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
     quantity: 3
     slot: 3

@@ -9,64 +9,43 @@ using Random = UnityEngine.Random;
 
 public class BattleManager : MonoBehaviour {
 
-    public GameObject blackFade;
-
     public static BattleManager instance;
-
-    public bool isFighting = false;
-
+    [Header("Prefabs")]
+    public GameObject damageText;
+    public GameObject criticalExplosion;
+    public GameObject regularExplosion;
+    public GameObject failExplosion;
+    [Header("Links")]
+    public GameObject canvas;
+    public GameObject slash;
+    public GameObject menuButtons;
+    public GameObject lootMenu;
+    public ParticleSystem healthRestore;
+    public GameObject shield;
+    public GameObject blackFade;
+    [Header("Battle Settings")]
     public GameObject enemy;
     public float enemyOffset;
-
-    public GameObject shield;
-
-    public float enemyHp = 100f;
-
-    public float playerHP = 100f;
-
+    public Monster monster;
+    public PlayerData player;
+    public float timer = 2.0f;
+    public float maxTimer = 2.0f;
     public bool hasShield = false;
     public bool shieldActive = false;
     public float shieldHp;
-
+    public float enemyHp = 100f;
+    public float playerHP = 100f;
+    [Header("UI Stuff")]
+    public TextMeshProUGUI enemyNameLevel;
     public Slider enemyHpSlider;
     public TextMeshProUGUI enemyHpText;
-
     public Slider playerHpSlider;
     public TextMeshProUGUI playerHpText;
     public Image playerHpColor;
-    public Gradient healthGradient;
-
     public Slider energySlider;
     public Text timerText;
-
     public Slider shieldSlider;
     public Text shieldText;
-
-    public TextMeshProUGUI enemyNameLevel;
-
-    public bool yourTurn = true;
-
-    public GameObject slash;
-
-    public GameObject damageText;
-
-    public GameObject canvas;
-
-    public GameObject criticalExplosion;
-
-    public GameObject regularExplosion;
-
-    public GameObject failExplosion;
-
-    public GameObject menuButtons;
-
-    public GameObject lootMenu;
-
-    public Monster monster;
-
-    public PlayerData player;
-
-    public ParticleSystem healthRestore;
 
     public enum BattlePhase
     {
@@ -86,15 +65,8 @@ public class BattleManager : MonoBehaviour {
     }
 
     public BattlePhase currentBattlePhase = BattlePhase.Start;
-
-    public float timer = 2.0f;
-
-    public float maxTimer = 2.0f;
-
-
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Application.targetFrameRate = 60;
         setEnemy(monster);
         player.hp = 100;
@@ -102,6 +74,8 @@ public class BattleManager : MonoBehaviour {
         refreshUI();
         StartCoroutine(BattleFade());
     }
+
+
 
     IEnumerator BattleFade()
     {
@@ -186,6 +160,7 @@ public class BattleManager : MonoBehaviour {
             }
             else
             {
+
                 timerText.text = "0:00";
                 energySlider.value = 0f;
             }
@@ -711,6 +686,6 @@ public class BattleManager : MonoBehaviour {
     {
         playerHpSlider.value = ((float)player.hp / (float)player.maxhp);
         playerHpText.text = player.hp.ToString() + "/" + player.maxhp.ToString() ;
-        playerHpColor.color = healthGradient.Evaluate(playerHpSlider.value);
+        playerHpColor.color = Globals.Instance.healthGradient.Evaluate(playerHpSlider.value);
     }
 }

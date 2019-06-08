@@ -15,5 +15,34 @@ MonoBehaviour:
   normalHitColor: {r: 1, g: 1, b: 1, a: 1}
   criticalHitColor: {r: 1, g: 0.862, b: 0.18, a: 1}
   missHitColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  healthGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0.94509804, g: 0.61339873, b: 0.1490196, a: 1}
+    key2: {r: 1, g: 0.9767974, b: 0.72156864, a: 0}
+    key3: {r: 0.72156864, g: 1, b: 0.7607843, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 13107
+    ctime1: 24576
+    ctime2: 32768
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
   lightningIcon: {fileID: 21300000, guid: 050780a0c3a5fff4dae849c70b4f18c0, type: 3}
   lightningIconI: {fileID: 0}

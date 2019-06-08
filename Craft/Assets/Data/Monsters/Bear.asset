@@ -24,14 +24,17 @@ MonoBehaviour:
   loot:
     table:
     - itemStack:
-        item: {fileID: 0}
-        quantity: 0
+        item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+        quantity: 3
+        slot: 0
       weight: 10
     - itemStack:
-        item: {fileID: 0}
-        quantity: 0
+        item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
+        quantity: 1
+        slot: 1
       weight: 40
     - itemStack:
-        item: {fileID: 0}
-        quantity: 0
+        item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
+        quantity: 5
+        slot: 2
       weight: 50
