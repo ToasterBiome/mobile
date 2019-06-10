@@ -46,6 +46,7 @@ public class BattleManager : MonoBehaviour {
     public Text timerText;
     public Slider shieldSlider;
     public Text shieldText;
+    public Image LightningFlash;
 
     public enum BattlePhase
     {
@@ -118,7 +119,7 @@ public class BattleManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(EnemyAttack());
+            Lightning();
         }
       
         if(currentBattlePhase == BattlePhase.Start)
@@ -152,6 +153,14 @@ public class BattleManager : MonoBehaviour {
         }
         if (currentBattlePhase == BattlePhase.Attacking)
         {
+            //check if lightning
+
+            int rand = Random.Range(1, 360);
+            if(rand == 1)
+            {
+                StartCoroutine(LightningStrike());
+            }
+
             timer -= Time.deltaTime;
             if (timer > 0)
             {
@@ -331,87 +340,27 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
-    public bool checkForSuccessfulHit()
+    IEnumerator LightningStrike()
     {
-        if (slash.GetComponent<SlashContainer>().successfulAttack)
+        Lightning();
+
+        for (int i = 60; i > 0; i--)
         {
-            bool killed = false;
-            float damage = 5f;
-            if (slash.GetComponent<SlashContainer>().criticalAttack)
-            {
-                damage *= 1.5f;
-            }
-            damage = Mathf.Floor(damage);
-
-            if(shieldActive) //reroute damage to shield first
-            {
-                damage -= monster.baseShieldDEF;
-                shieldHp -= damage;
-                shieldSlider.value = (shieldHp / monster.baseShieldHP);
-                shieldText.text = Mathf.Ceil(shieldHp).ToString() + "/" + monster.baseShieldHP;
-                spawnDamageText(Vector3.zero, damage, slash.GetComponent<SlashContainer>().criticalAttack);
-                StartCoroutine(ShakeEnemy(0.125f, .25f));
-                if (shieldHp <= 0) //shield dead
-                {
-                    shieldSlider.value = (0 / monster.baseShieldHP);
-                    shieldText.text = "0/" + monster.baseShieldHP;
-                    shieldHp = 0f;
-                    shieldActive = false;
-                    StartCoroutine(DestroyShield());
-                    return false;
-                } else
-                {
-                    return false;
-                }
-            }
-
-
-
-            damage -= monster.baseDEF;
-            if(damage <= 0)
-            {
-                damage = 0;
-
-                spawnDamageText(Vector3.zero, damage, slash.GetComponent<SlashContainer>().criticalAttack);
-                StartCoroutine(ShakeEnemy(0.125f, .25f));
-                return false;
-            }
-            enemyHp -= damage;
-            if (enemyHp <= 0)
-            {
-                enemyHp = 0;
-                
-                killed = true;
-            }
-            enemyHpSlider.value = (enemyHp / monster.baseHP);
-            enemyHpText.text = Mathf.Ceil(enemyHp).ToString() + "/" + monster.baseHP;
-
-            spawnDamageText(Vector3.zero, damage, slash.GetComponent<SlashContainer>().criticalAttack);
-
-            //Debug.Log(slash.GetComponent<CursorController>().midPoint);
-            StartCoroutine(ShakeEnemy(0.25f,.5f));
-            
-            if(killed)
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
-        } else
-        {
-            return false;
+            Color lightningColor = LightningFlash.GetComponent<Image>().color;
+            lightningColor.a = (i / 60f);
+            LightningFlash.GetComponent<Image>().color = lightningColor;
+            yield return null;
         }
-       
     }
 
-    public bool recieveHit(GameObject slash)
+    public void recieveHit(GameObject slash)
     {
-        if (slash.GetComponent<Slash>().hitType >= 1) //if normal hit or above
+        int hitType = slash.GetComponent<Slash>().hitType;
+
+        if (hitType >= 1) //if normal hit or above
         {
-            bool killed = false;
             float damage = 5f;
-            if (slash.GetComponent<Slash>().hitType == 2) //if critical
+            if (hitType == 2) //if critical
             {
                 damage *= 1.5f;
             }
@@ -425,7 +374,7 @@ public class BattleManager : MonoBehaviour {
 
             if (shieldActive) //reroute damage to shield first
             {
-                
+
                 damage -= monster.baseShieldDEF;
                 if (damage <= 0)
                 {
@@ -433,12 +382,12 @@ public class BattleManager : MonoBehaviour {
                     spawnDamageText(Vector3.zero, damage, 0);
                     slash.GetComponent<Slash>().color = new Color(1, 0.862f, 0.180f);
                     StartCoroutine(ShakeEnemy(0.125f, .25f));
-                    return false;
+                    return;
                 }
                 shieldHp -= damage;
                 shieldSlider.value = (shieldHp / monster.baseShieldHP);
                 shieldText.text = Mathf.Ceil(shieldHp).ToString() + "/" + monster.baseShieldHP;
-                spawnDamageText(Vector3.zero, damage, slash.GetComponent<Slash>().hitType);
+                spawnDamageText(Vector3.zero, damage, hitType);
                 StartCoroutine(ShakeEnemy(0.125f, .25f));
                 if (shieldHp <= 0) //shield dead
                 {
@@ -447,61 +396,57 @@ public class BattleManager : MonoBehaviour {
                     shieldHp = 0f;
                     shieldActive = false;
                     StartCoroutine(DestroyShield());
-                    return false;
+                    return;
                 }
                 else
                 {
-                    return false;
+                    return;
                 }
             }
 
-
-
-            damage -= monster.baseDEF;
-            if (damage <= 0)
-            {
-                damage = 0;
-
-                spawnDamageText(Vector3.zero, damage, slash.GetComponent<Slash>().hitType);
-                StartCoroutine(ShakeEnemy(0.125f, .25f));
-                return false;
-            }
-            enemyHp -= damage;
-            if (enemyHp <= 0)
-            {
-                enemyHp = 0;
-
-                killed = true;
-            }
-            enemyHpSlider.value = (enemyHp / monster.baseHP);
-            enemyHpText.text = Mathf.Ceil(enemyHp).ToString() + "/" + monster.baseHP;
-
-            spawnDamageText(Vector3.zero, damage, slash.GetComponent<Slash>().hitType);
-
-            //Debug.Log(slash.GetComponent<CursorController>().midPoint);
-            StartCoroutine(ShakeEnemy(0.25f, .5f));
-
-            //get angle of slash
-            Vector2 pos = slash.GetComponent<Slash>().startPoint - slash.GetComponent<Slash>().endPoint;
-            Vector2 normalpos = pos.normalized;
-
-            if (killed)
-            {
-                StartCoroutine("DissolveEnemy");
-                currentBattlePhase = BattlePhase.Ending;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            TakeDamage(hitType, damage);
+            return;
         }
         else
         {
-            spawnDamageText(Vector3.zero, 0, slash.GetComponent<Slash>().hitType);
+            spawnDamageText(Vector3.zero, 0, hitType);
             StartCoroutine(ShakeEnemy(0.125f, .25f));
-            return false;
+            return;
         }
+    }
+
+    private void TakeDamage(int hitType,float damage)
+    {
+        damage -= monster.baseDEF;
+        if (damage <= 0)
+        {
+            damage = 0;
+
+            spawnDamageText(Vector3.zero, damage, hitType);
+            StartCoroutine(ShakeEnemy(0.125f, .25f));
+            return;
+        }
+        enemyHp -= damage;
+        if (enemyHp <= 0)
+        {
+            enemyHp = 0;
+
+            StartCoroutine("DissolveEnemy");
+            currentBattlePhase = BattlePhase.Ending;
+        }
+        enemyHpSlider.value = (enemyHp / monster.baseHP);
+        enemyHpText.text = Mathf.Ceil(enemyHp).ToString() + "/" + monster.baseHP;
+
+        spawnDamageText(Vector3.zero, damage, hitType);
+
+        StartCoroutine(ShakeEnemy(0.25f, .5f));
+
+        return;
+    }
+
+    public void Lightning()
+    {
+        TakeDamage(3, 16);
     }
 
     public GameObject spawnDamageText(Vector2 location, float number, int hitType)
@@ -518,53 +463,18 @@ public class BattleManager : MonoBehaviour {
             critObject.transform.SetParent(canvas.transform);
             critObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             return damageTextObject;
-        }
-
-        if (hitType == 2)
+        } else if (hitType == 2)
         {
             GameObject critObject = Instantiate(criticalExplosion, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity); //create critical explosion gameObject
 
             critObject.transform.SetParent(canvas.transform);
             critObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        }
-        else
+        } else if (hitType == 3)
         {
-            GameObject normObject = Instantiate(regularExplosion, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity); //create normal explosion gameObject
-
-            normObject.transform.SetParent(canvas.transform);
-            normObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        }
-
-        return damageTextObject;
-    }
-
-    public GameObject spawnDamageText(Vector2 location, float number, bool critical)
-    {
-        //spawn the actual text
-        GameObject damageTextObject = Instantiate(damageText, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity);
-        damageTextObject.transform.SetParent(canvas.transform);
-        damageTextObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        damageTextObject.GetComponent<Text>().text = number.ToString();
-        damageTextObject.GetComponent<Text>();
-        damageTextObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        //critical or not
-        if (number == 0)
-        {
-            damageTextObject.GetComponent<Text>().color = new Color(.5f, 0.5f, 0.5f);
-
-            GameObject critObject = Instantiate(failExplosion, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity); //create fail explosion gameObject
-
-            critObject.transform.SetParent(canvas.transform);
-            critObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-            return damageTextObject;
-        }
-
-        if (critical)
-        {
-            damageTextObject.GetComponent<Text>().color = new Color(1, 0.862f, 0.180f); //set color to gold
-
             GameObject critObject = Instantiate(criticalExplosion, slash.GetComponent<SlashContainer>().slashMidPos, Quaternion.identity); //create critical explosion gameObject
 
+            ParticleSystem.MainModule settings = critObject.GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(Globals.Instance.lightningHitColor);
             critObject.transform.SetParent(canvas.transform);
             critObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
@@ -675,11 +585,6 @@ public class BattleManager : MonoBehaviour {
         {
             StartCoroutine(FadeInUI(menu, 8f));
         }
-    }
-
-    public void UseItem(GameObject contentObject)
-    {
-
     }
 
     public void refreshUI()

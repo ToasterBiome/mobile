@@ -47,5 +47,12 @@ public class DamageText : MonoBehaviour {
             imageComp.color = Globals.Instance.criticalHitColor;
         }
 
+        if (hitType == 3)
+        {
+            textComp.color = Globals.Instance.lightningHitColor; //set color to gold
+            imageComp.color = Globals.Instance.lightningHitColor;
+            imageComp.sprite = Globals.Instance.lightningIcon;
+        }
+
     }
 }

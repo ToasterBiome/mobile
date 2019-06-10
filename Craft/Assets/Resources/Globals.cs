@@ -20,6 +20,7 @@ public class Globals : ScriptableObject
     public Color normalHitColor;
     public Color criticalHitColor;
     public Color missHitColor;
+    public Color lightningHitColor;
     public Gradient healthGradient;
 
     public Sprite lightningIcon;
