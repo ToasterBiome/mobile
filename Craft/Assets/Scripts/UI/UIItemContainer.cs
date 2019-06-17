@@ -26,6 +26,11 @@ public class UIItemContainer : MonoBehaviour
     public void setValues(ItemStack i)
     {
         itemStack = i;
+        if (itemStack.isEmpty())
+        {
+            Clear(true);
+            return;
+        }
         if (itemNameDesc != null)
         {
             itemNameDesc.text = "<b>" + itemStack.item.itemName + "</b>\n<i>" + itemStack.item.itemDescription + "</i>";
@@ -87,7 +92,7 @@ public class UIItemContainer : MonoBehaviour
         updateQuantity();
         if (itemStack.quantity <= 0)
         {
-            BattleManager.instance.player.removeFromInventory(itemStack.slot);
+            BattleManager.instance.player.inv.clearSlot(itemStack.slot);
             Clear(true);
             GetComponent<Button>().enabled = false;
             //Destroy(gameObject);

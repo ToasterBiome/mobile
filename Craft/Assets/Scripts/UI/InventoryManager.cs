@@ -46,19 +46,9 @@ public class InventoryManager : MonoBehaviour
 
     public void GenerateItems()
     {
-        foreach(ItemStack itemStack in BattleManager.instance.player.inventory)
+        foreach(ItemStack itemStack in BattleManager.instance.player.inv.GetContents())
         {
-            GameObject itemContainer = Instantiate(itemPrefab, contentParent.transform);
-            itemContainer.GetComponent<UIItemContainer>().managerParent = gameObject;
-            if(itemStack.item != null)
-            {
-                itemContainer.GetComponent<UIItemContainer>().setValues(itemStack, "<b>" + itemStack.item.itemName + "</b>\n<i>" + itemStack.item.itemDescription + "</i>", itemStack.item.sprite, itemStack.quantity, itemStack.item.color);
-
-            } else
-            {
-                itemContainer.GetComponent<UIItemContainer>().Clear(true);
-            }
-            items.Add(itemContainer);
+            items[itemStack.slot].GetComponent<UIItemContainer>().setValues(itemStack);
         }
     }
 }

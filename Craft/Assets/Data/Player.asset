@@ -18,56 +18,71 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  inventory:
-  - item: {fileID: 11400000, guid: a9ba8566fb3849145a19666221e93fc7, type: 2}
-    quantity: 1
-    slot: 0
-  - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
-    quantity: 0
-    slot: 1
-  - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
-    quantity: 5
-    slot: 2
-  - item: {fileID: 11400000, guid: 0c7b6daf4d59c1a41ac2daab90d02e3f, type: 2}
-    quantity: 3
-    slot: 3
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 4
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 5
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 6
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 7
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 8
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 9
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 10
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 11
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 11
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 11
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 11
-  - item: {fileID: 0}
-    quantity: 0
-    slot: 11
   maxInventory: 16
+  inv:
+    contents:
+    - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+      quantity: 9
+      slot: 0
+    - item: {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
+      quantity: 3
+      slot: 1
+    - item: {fileID: 11400000, guid: a9ba8566fb3849145a19666221e93fc7, type: 2}
+      quantity: 1
+      slot: 2
+    - item: {fileID: 11400000, guid: b799cfebae25a4149b48854af25c4c25, type: 2}
+      quantity: 1
+      slot: 3
+    - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
+      quantity: 3
+      slot: 4
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 5
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 6
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 7
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 8
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 9
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 10
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 11
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 12
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 13
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 14
+    - item: {fileID: 0}
+      quantity: 0
+      slot: 15
+  starterEquipment:
+    contents:
+    - item: {fileID: 11400000, guid: 7bbd0ff24320e7a4e885eaf02be0e494, type: 2}
+      quantity: 5
+      slot: 0
+    - item: {fileID: 11400000, guid: f44fd8f2a9b7cd54086301f096119fce, type: 2}
+      quantity: 3
+      slot: 1
+    - item: {fileID: 11400000, guid: a9ba8566fb3849145a19666221e93fc7, type: 2}
+      quantity: 1
+      slot: 2
+    - item: {fileID: 11400000, guid: b799cfebae25a4149b48854af25c4c25, type: 2}
+      quantity: 1
+      slot: 3
   hp: 100
   maxhp: 100
   ATTACK:

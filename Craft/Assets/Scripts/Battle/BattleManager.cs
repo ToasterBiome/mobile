@@ -44,9 +44,10 @@ public class BattleManager : MonoBehaviour {
     public Image playerHpColor;
     public Slider energySlider;
     public Text timerText;
-    public Slider shieldSlider;
-    public Text shieldText;
+    public SegmentedBar shieldSlider;
     public Image LightningFlash;
+
+    public SegmentedBar segbar;
 
     public enum BattlePhase
     {
@@ -119,7 +120,11 @@ public class BattleManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Lightning();
+            segbar.value = segbar.value - 1;
+            if (segbar.value == -1)
+            {
+                segbar.value = 4;
+            }
         }
       
         if(currentBattlePhase == BattlePhase.Start)
@@ -155,11 +160,13 @@ public class BattleManager : MonoBehaviour {
         {
             //check if lightning
 
+            /*
             int rand = Random.Range(1, 360);
             if(rand == 1)
             {
                 StartCoroutine(LightningStrike());
             }
+            */
 
             timer -= Time.deltaTime;
             if (timer > 0)
@@ -235,6 +242,7 @@ public class BattleManager : MonoBehaviour {
             lootMenu.GetComponent<CanvasGroup>().alpha = 0f;
             List<ItemStack> loot = new List<ItemStack>();
             loot = monster.loot.getRandomItem(5);
+            player.inv.AddFromList(loot);
             lootMenu.GetComponent<LootManager>().GenerateItems(loot);
             StartCoroutine(FadeInLoot());
             currentBattlePhase = BattlePhase.Ended;
@@ -374,25 +382,23 @@ public class BattleManager : MonoBehaviour {
 
             if (shieldActive) //reroute damage to shield first
             {
-
-                damage -= monster.baseShieldDEF;
-                if (damage <= 0)
+                if(hitType == 2)
                 {
-                    damage = 0;
-                    spawnDamageText(Vector3.zero, damage, 0);
-                    slash.GetComponent<Slash>().color = new Color(1, 0.862f, 0.180f);
-                    StartCoroutine(ShakeEnemy(0.125f, .25f));
-                    return;
+                    shieldHp -= 1;
                 }
-                shieldHp -= damage;
-                shieldSlider.value = (shieldHp / monster.baseShieldHP);
-                shieldText.text = Mathf.Ceil(shieldHp).ToString() + "/" + monster.baseShieldHP;
-                spawnDamageText(Vector3.zero, damage, hitType);
+                shieldHp -= 1;
+                shieldSlider.value = (int)shieldHp;
+                if(hitType == 2)
+                {
+                    spawnDamageText(Vector3.zero, 2, hitType);
+                } else
+                {
+                    spawnDamageText(Vector3.zero, 1, hitType);
+                }
                 StartCoroutine(ShakeEnemy(0.125f, .25f));
                 if (shieldHp <= 0) //shield dead
                 {
-                    shieldSlider.value = (0 / monster.baseShieldHP);
-                    shieldText.text = "0/" + monster.baseShieldHP;
+                    shieldSlider.value = 0;
                     shieldHp = 0f;
                     shieldActive = false;
                     StartCoroutine(DestroyShield());
@@ -561,7 +567,6 @@ public class BattleManager : MonoBehaviour {
         if(monster.hasShield)
         {
             shieldSlider.gameObject.SetActive(true);
-            shieldText.text = monster.baseShieldHP + "/" + monster.baseShieldHP;
             shieldHp = monster.baseShieldHP;
             hasShield = true;
             shieldActive = true;

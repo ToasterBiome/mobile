@@ -19,7 +19,7 @@ MonoBehaviour:
   level: 16
   hasShield: 1
   sheildSprite: {fileID: 21300000, guid: 2e1d11eb12e1d444790e120f3a48f694, type: 3}
-  baseShieldHP: 16
+  baseShieldHP: 4
   baseShieldDEF: 2
   loot:
     table: []
