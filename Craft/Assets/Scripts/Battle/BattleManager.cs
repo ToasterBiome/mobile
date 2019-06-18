@@ -25,6 +25,7 @@ public class BattleManager : MonoBehaviour {
     public GameObject blackFade;
     [Header("Battle Settings")]
     public GameObject enemy;
+    public GameObject enemyParent;
     public float enemyOffset;
     public Monster monster;
     public PlayerData player;
@@ -46,6 +47,8 @@ public class BattleManager : MonoBehaviour {
     public Text timerText;
     public SegmentedBar shieldSlider;
     public Image LightningFlash;
+
+    public Animator enemyAnimator;
 
     public SegmentedBar segbar;
 
@@ -276,15 +279,16 @@ public class BattleManager : MonoBehaviour {
         float counter = 0f;
         while (counter < waitTime)
         {
-            enemy.transform.position = Random.insideUnitCircle * intensity * (1 - counter/waitTime);
+            enemyParent.transform.position = Random.insideUnitCircle * intensity * (1 - counter/waitTime);
             counter += Time.deltaTime;
             yield return null;
         }
-        enemy.transform.position = new Vector2(0, 0);
+        enemyParent.transform.position = new Vector2(0, 0);
     }
 
     IEnumerator DissolveEnemy()
     {
+        
         float waitTime = 2f; //seconds
         float counter = 0f;
         while (counter < waitTime)
@@ -295,6 +299,7 @@ public class BattleManager : MonoBehaviour {
             yield return null;
         }
         Destroy(enemy);
+        
     }
 
     IEnumerator DestroyShield()
@@ -437,7 +442,7 @@ public class BattleManager : MonoBehaviour {
         {
             enemyHp = 0;
 
-            StartCoroutine("DissolveEnemy");
+            enemyAnimator.SetTrigger("Die");
             currentBattlePhase = BattlePhase.Ending;
         }
         enemyHpSlider.value = (enemyHp / monster.baseHP);
@@ -497,37 +502,19 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator EnemyAttack()
     {
-        float timeToWait = .5f;
+        enemyAnimator.SetTrigger("Attack");
+        float timeToWait = .8f;
         float counter = 0f;
         while(counter < timeToWait)
         {
             counter += Time.deltaTime;
             yield return null;
         }
-        int phaseOfAttack = 0;
-        while(enemy.transform.position.y < 0.5f && phaseOfAttack == 0)
-        {
-            enemy.transform.position = new Vector2(0, enemy.transform.position.y + Time.deltaTime * 4);
-            yield return null;
-        }
-        enemy.transform.position = new Vector2(0, 0.5f);
-        phaseOfAttack = 1;
-        while (enemy.transform.position.y > -1 && phaseOfAttack == 1)
-        {
-            enemy.transform.position = new Vector2(0, enemy.transform.position.y - Time.deltaTime * 16);
-            yield return null;
-        }
-        enemy.transform.position = new Vector2(0, -1f);
-        playerHit();
-        phaseOfAttack = 2;
-        while (enemy.transform.position.y < 0 && phaseOfAttack == 2)
-        {
-            enemy.transform.position = new Vector2(0, enemy.transform.position.y + Time.deltaTime * 8);
-            yield return null;
-        }
-        enemy.transform.position = new Vector2(0, 0);
-        phaseOfAttack = 3;
+        //playerHit();
         enemyAttackProcess();
+
+
+
     }
 
     public void playerHit()
