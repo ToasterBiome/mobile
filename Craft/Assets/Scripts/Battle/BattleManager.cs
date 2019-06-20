@@ -502,7 +502,7 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator EnemyAttack()
     {
-        enemyAnimator.SetTrigger("Attack");
+        enemyAnimator.SetTrigger("Super Attack");
         float timeToWait = .8f;
         float counter = 0f;
         while(counter < timeToWait)
