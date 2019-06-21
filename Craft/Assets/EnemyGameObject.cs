@@ -16,8 +16,8 @@ public class EnemyGameObject : MonoBehaviour
         
     }
 
-    public void EnemyHit()
+    public void EnemyHit(int bonus)
     {
-        BattleManager.instance.playerHit();
+        BattleManager.instance.playerHit(bonus);
     }
 }

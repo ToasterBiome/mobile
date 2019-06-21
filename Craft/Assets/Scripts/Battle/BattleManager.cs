@@ -47,6 +47,7 @@ public class BattleManager : MonoBehaviour {
     public Text timerText;
     public SegmentedBar shieldSlider;
     public Image LightningFlash;
+    public GameObject safeArea;
 
     public Animator enemyAnimator;
 
@@ -78,20 +79,23 @@ public class BattleManager : MonoBehaviour {
         PlayerPrefs.DeleteAll();
         refreshUI();
         StartCoroutine(BattleFade());
+        safeArea.SetActive(false);
+        safeArea.GetComponent<CanvasGroup>().alpha = 0f;
     }
 
 
 
     IEnumerator BattleFade()
     {
-        float waitTime = 1f; //seconds
+        float waitTime = 2f; //seconds
         float counter = 0f;
         while (counter < waitTime)
         {
-            blackFade.GetComponent<Image>().material.SetFloat("_DissolvePower", 1 - counter / waitTime);
             counter += Time.deltaTime;
             yield return null;
         }
+        Debug.Log("Starting fade");
+        StartCoroutine(FadeInUI(safeArea, 15f));
     }
 
     private void OnValidate()
@@ -502,7 +506,17 @@ public class BattleManager : MonoBehaviour {
 
     IEnumerator EnemyAttack()
     {
-        enemyAnimator.SetTrigger("Super Attack");
+        //decide what attack to do
+        float rand = Random.Range(0f, 1f);
+        Debug.Log(rand);
+        if(rand <= monster.strongAttackChance)
+        {
+            enemyAnimator.SetTrigger("Super Attack");
+        } else
+        {
+            enemyAnimator.SetTrigger("Attack");
+        }
+        
         float timeToWait = .8f;
         float counter = 0f;
         while(counter < timeToWait)
@@ -517,10 +531,10 @@ public class BattleManager : MonoBehaviour {
 
     }
 
-    public void playerHit()
+    public void playerHit(int bonus)
     {
         StartCoroutine(ShakePlayer(0.25f, .5f));
-        player.hp -= 10;
+        player.hp -= 10 + bonus;
         refreshUI();
     }
 

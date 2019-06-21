@@ -18,6 +18,8 @@ public class Monster : ScriptableObject
     public int baseShieldDEF;
 
     public LootTable loot;
+
+    public float strongAttackChance = 0f;
 }
 
 

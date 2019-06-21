@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - PixelSnap: 1
     - _ColorMask: 15
-    - _DissolvePower: 0.0049343705
+    - _DissolvePower: 0.00084888935
     - _EmissionThickness: 0.227
     - _Stencil: 0
     - _StencilComp: 8
