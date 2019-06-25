@@ -30,13 +30,13 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: a9ba8566fb3849145a19666221e93fc7, type: 2}
       quantity: 1
       slot: 2
-    - item: {fileID: 11400000, guid: b799cfebae25a4149b48854af25c4c25, type: 2}
+    - item: {fileID: 11400000, guid: 1bbcfcfe8a4979a42879acd897281a71, type: 2}
       quantity: 1
       slot: 3
-    - item: {fileID: 11400000, guid: aca2578a02250994f8c678647af58c66, type: 2}
-      quantity: 3
+    - item: {fileID: 11400000, guid: 24859aa9da9550841bb7ed4f98ba9efd, type: 2}
+      quantity: 1
       slot: 4
-    - item: {fileID: 0}
+    - item: {fileID: 11400000, guid: f6243cd54daf5e6428d32a1177c0406d, type: 2}
       quantity: 0
       slot: 5
     - item: {fileID: 0}

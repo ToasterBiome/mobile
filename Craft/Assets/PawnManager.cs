@@ -19,6 +19,8 @@ public class PawnManager : MonoBehaviour
 
     public CanvasGroup blackFade;
 
+    public Monster mon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +89,7 @@ public class PawnManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        SceneManager.LoadScene("Battle Scene");
+        BigGameManager.instance.StartBattle(mon);
 
         yield return null;
         
