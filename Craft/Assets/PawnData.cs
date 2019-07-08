@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PawnData : MonoBehaviour
 {
+    public GameObject lockGO;
+
     public string PawnName {
         get
         {
@@ -20,6 +22,7 @@ public class PawnData : MonoBehaviour
     }
 
     public string Description;
+    public bool locked = true;
 
     public enum PawnTypes
     {
@@ -30,12 +33,21 @@ public class PawnData : MonoBehaviour
         Chest
     }
 
+    public void toggleLock()
+    {
+        locked = !locked;
+        lockGO.SetActive(locked);
+    }
+
     public PawnTypes PawnType;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!locked)
+        {
+            lockGO.SetActive(false);
+        }
     }
 
     // Update is called once per frame

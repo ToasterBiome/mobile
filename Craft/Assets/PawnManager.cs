@@ -37,13 +37,17 @@ public class PawnManager : MonoBehaviour
             if (hit.collider != null)
             {
                 Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-                selectedTile = hit.collider.gameObject;
-                if (!isWalking)
+                if(!hit.collider.gameObject.GetComponent<PawnData>().locked)
                 {
-                    selectButtonGameObject.SetActive(false);
-                    isWalking = true;
-                    StartCoroutine(Walk(hit.collider.gameObject.transform.position));
+                    selectedTile = hit.collider.gameObject;
+                    if (!isWalking)
+                    {
+                        selectButtonGameObject.SetActive(false);
+                        isWalking = true;
+                        StartCoroutine(Walk(hit.collider.gameObject.transform.position));
+                    }
                 }
+                
             }
         }
     }
